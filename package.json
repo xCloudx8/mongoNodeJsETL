@@ -1,0 +1,14 @@
+{
+  "name": "mongonodejsetl",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Daniele",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "mongodb": "^3.5.7"
+  }
+}
