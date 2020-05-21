@@ -1,4 +1,6 @@
 const index = require('./src/index')
 
-index()
-
+module.exports = (async () => {
+    await index()
+}
+)()
