@@ -1,6 +1,7 @@
 const {insertRunningJob, updateSuccessRunningJob, deprecateOldRunningjobs} = require('../helper/jobRunning')
 const connection = require('../helper/connection')
 const downloadData = require('../helper/downloadData')
+const logger = require('../helper/logger')
 
 module.exports = async () => { 
 
@@ -8,16 +9,16 @@ module.exports = async () => {
     const run = await db.findOne({"status": "running"})
 
     if(run){
-        console.log('Deprecating Old running jobs')
+        logger.warning('Deprecating Old running jobs')
         await deprecateOldRunningjobs()
     }
 
-    console.log('Starting ETL')
+    logger.info('Starting ETL')
     await insertRunningJob("etlJob")
     
-    console.log('Downloading data')
+    logger.info('Downloading data')
     await downloadData()
 
-    console.log('Ending ETL')
+    logger.info('Ending ETL')
     await updateSuccessRunningJob()
 }
